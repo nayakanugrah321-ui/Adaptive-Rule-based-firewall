@@ -1,0 +1,5 @@
+scapy>=2.5.0       # Step 2: Packet Sensor (real capture mode only)
+                   # Windows also needs Npcap installed separately: https://npcap.com/#download
+                   # (check "Install Npcap in WinPcap API-compatible Mode" during setup)
+flask>=3.0.0        # Step 10: Dashboard
+pytest>=8.0.0        # testing

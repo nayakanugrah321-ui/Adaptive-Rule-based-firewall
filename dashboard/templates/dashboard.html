@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Firewall</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">&#9679;</span>
+    <div>
+      <h1>Smart Firewall</h1>
+      <p class="brand-sub">Adaptive traffic monitoring console</p>
+    </div>
+  </div>
+  <div class="status-row" id="status-row">
+    <div class="status-pill"><span class="dot dot-green"></span>Firewall <b id="st-firewall">&ndash;</b></div>
+    <div class="status-pill"><span class="dot dot-green"></span>IDS <b id="st-ids">&ndash;</b></div>
+    <div class="status-pill"><span class="dot dot-green"></span>Auto-Response <b id="st-response">&ndash;</b></div>
+  </div>
+</header>
+
+<main>
+
+  <section class="stats-grid" id="stats-grid">
+    <div class="stat-card">
+      <span class="stat-value" id="stat-packets">0</span>
+      <span class="stat-label">Packets observed</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-value" id="stat-connections">0</span>
+      <span class="stat-label">Connections</span>
+    </div>
+    <div class="stat-card stat-card--warn">
+      <span class="stat-value" id="stat-threats">0</span>
+      <span class="stat-label">Threat events logged</span>
+    </div>
+    <div class="stat-card stat-card--danger">
+      <span class="stat-value" id="stat-blocked">0</span>
+      <span class="stat-label">Blocked sources</span>
+    </div>
+  </section>
+
+  <section class="panels">
+
+    <div class="panel panel--wide">
+      <h2>Recent alerts</h2>
+      <table class="data-table" id="alerts-table">
+        <thead>
+          <tr><th>Time</th><th>Source</th><th>Event</th><th>Score</th><th>Level</th><th>Action</th></tr>
+        </thead>
+        <tbody id="alerts-body">
+          <tr class="empty-row"><td colspan="6">No events yet &mdash; waiting for traffic&hellip;</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="panel-stack">
+      <div class="panel">
+        <h2>Blocked sources</h2>
+        <table class="data-table" id="blocked-table">
+          <thead>
+            <tr><th>IP</th><th>Reason</th><th>Score</th><th>Expires in</th></tr>
+          </thead>
+          <tbody id="blocked-body">
+            <tr class="empty-row"><td colspan="4">No active blocks</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="panel">
+        <h2>Recent site visits</h2>
+        <table class="data-table" id="sites-table">
+          <thead>
+            <tr><th>Time</th><th>Source</th><th>Domain</th></tr>
+          </thead>
+          <tbody id="sites-body">
+            <tr class="empty-row"><td colspan="3">No DNS lookups seen yet (real mode only)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="panel">
+        <h2>Firewall rules</h2>
+        <table class="data-table" id="rules-table">
+          <thead>
+            <tr><th>Action</th><th>Match</th></tr>
+          </thead>
+          <tbody id="rules-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+<script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+</body>
+</html>
