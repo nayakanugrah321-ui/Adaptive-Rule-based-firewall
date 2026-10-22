@@ -24,7 +24,6 @@ WEIGHTS = {
     "TRAFFIC_ANOMALY": config.SCORE_WEIGHT_TRAFFIC_ANOMALY,
 }
 
-
 class ThreatScoreEngine:
     def __init__(self):
         self._scores: dict[str, int] = {}
