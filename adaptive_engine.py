@@ -24,3 +24,5 @@ class AdaptiveEngine:
     def decide(self, threat_level: str) -> str:
         """Map a LOW/MEDIUM/HIGH threat level to a posture decision."""
         return DECISION_FOR_LEVEL.get(threat_level, "NORMAL")
+
+
